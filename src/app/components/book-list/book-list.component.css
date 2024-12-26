@@ -1,0 +1,200 @@
+/* Styles pour le conteneur principal */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Barre de recherche en haut de la page */
+.search-bar {
+  background-color: #000; /* Zone noire */
+  color: white;
+  padding: 10px;
+}
+
+.search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Conteneur principal avec la barre latérale et la zone des livres */
+.content-container {
+  display: flex;
+  flex: 1;
+}
+
+/* Barre latérale */
+.sidebar {
+  width: 250px;
+  background-color: #001f3d; /* Bleu marine */
+  color: white;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.sidebar-header .fa {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.library-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.category-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.category-list li {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-list li:hover {
+  background-color: #003f6f; /* Un bleu plus foncé pour l'effet hover */
+}
+
+/* Conteneur des livres */
+.books-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.book-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.book-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.book-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.book-info p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.availability.unavailable {
+  color: red;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #001f3d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003f6f;
+}
+/* Style pour le modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 70%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-details p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styles pour la barre de recherche et la liste déroulante */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+
+.search-option {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  width: 800px; /* Rendre le champ de recherche plus court */
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 2px solid #4CAF50; /* Ajout d'une bordure verte sur focus */
+}

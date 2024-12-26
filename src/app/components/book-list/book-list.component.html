@@ -1,0 +1,65 @@
+<div class="main-container">
+  <!-- Barre de recherche en haut -->
+  <header class="search-bar">
+    <div class="search-container">
+      <!-- Liste déroulante pour choisir le type de recherche -->
+      <select [(ngModel)]="selectedFilter" class="search-option">
+        <option value="title">Rechercher par titre</option>
+        <option value="author">Rechercher par auteur</option>
+      </select>
+      <!-- Champ de recherche -->
+      <input type="text" placeholder="Rechercher..." [(ngModel)]="searchQuery" (input)="filterBooks()" />
+    </div>
+  </header>
+
+  <!-- Conteneur principal avec barre latérale et livres -->
+  <div class="content-container">
+    <!-- Barre latérale -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <i class="fa fa-book"></i> <!-- Icône bibliothèque -->
+        <span class="library-name">Ma Bibliothèque</span>
+      </div>
+      <ul class="category-list">
+        <li (click)="filterBooksByCategory('all')">Toutes</li>
+        <li *ngFor="let category of categories" (click)="filterBooksByCategory(category)">
+          {{ category }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Liste des livres -->
+    <div class="books-container">
+      <div class="book-item" *ngFor="let book of filteredBooks">
+        <img [src]="book.imageurl" alt="Image du livre" class="book-image" />
+        <div class="book-info">
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.author }}</p>
+          <p class="availability" [ngClass]="{'unavailable': !book.status}">
+            {{ book.status ? 'Disponible' : 'Indisponible' }}
+          </p>
+          <button (click)="showBookDetails(book)">Détails</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal pour afficher les détails du livre -->
+  <div *ngIf="showDetailsModal" class="modal">
+    <div class="modal-content">
+      <h3>Détails du livre</h3>
+      <div class="book-details">
+        <p><strong>Titre :</strong> {{ selectedBook?.title }}</p>
+        <p><strong>Auteur :</strong> {{ selectedBook?.author }}</p>
+        <p><strong>Catégorie :</strong> {{ selectedBook?.category }}</p>
+        <p><strong>Année de publication :</strong> {{ selectedBook?.year }}</p>
+        <p><strong>Description :</strong> {{ selectedBook?.description }}</p>
+        <p>
+          <strong>Disponibilité :</strong>
+          {{ selectedBook?.status ? 'Disponible' : 'Indisponible' }}
+        </p>
+      </div>
+      <button (click)="closeDetails()">Fermer</button>
+    </div>
+  </div>
+</div>
